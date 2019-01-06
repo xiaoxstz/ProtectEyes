@@ -1,8 +1,8 @@
-﻿namespace ProtectEye
+﻿namespace ProtectEyeService
 {
-    partial class Form1
+    partial class Service1
     {
-        /// <summary>
+        /// <summary> 
         /// 必需的设计器变量。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -20,28 +20,18 @@
             base.Dispose(disposing);
         }
 
-        #region Windows 窗体设计器生成的代码
+        #region 组件设计器生成的代码
 
-        /// <summary>
+        /// <summary> 
         /// 设计器支持所需的方法 - 不要修改
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 377);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            components = new System.ComponentModel.Container();
+            this.ServiceName = "Service1";
         }
 
         #endregion
     }
 }
-
