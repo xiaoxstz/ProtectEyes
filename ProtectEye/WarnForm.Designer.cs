@@ -103,7 +103,7 @@
 
             // 自定义
             //this.showEvent += showThis;
-            this.showEvent += new showDelegate(showThis);
+            //this.showEvent += new showDelegate(showThis);
         }
 
         
