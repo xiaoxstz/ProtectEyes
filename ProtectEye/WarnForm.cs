@@ -28,6 +28,7 @@ namespace ProtectEye
         {
             //业务逻辑代码
             //notifyIcon1_DoubleClick(null, null); // 会出现跨线程问题
+            showEvent(true);
         }
         protected override void OnActivated(EventArgs e)
         {

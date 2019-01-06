@@ -101,7 +101,12 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            // 自定义
+            //this.showEvent += showThis;
+            this.showEvent += new showDelegate(showThis);
         }
+
+        
 
         #endregion
 
@@ -110,5 +115,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStartWork;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+
+        // 自定义
+        private delegate void showDelegate(bool bShow);
+        private showDelegate showEvent;
+        private void showThis(bool bShow)
+        {
+            if (bShow)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Hide();
+            }
+        }
     }
 }
