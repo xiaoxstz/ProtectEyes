@@ -9,7 +9,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ProtectEyeService
+namespace ProtectEye
 {
     public partial class Service1 : ServiceBase
     {
@@ -27,7 +27,8 @@ namespace ProtectEyeService
         private void TimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
             //业务逻辑代码
-            this.WriteLog("执行事件");            
+            this.WriteLog("执行事件");
+            Process.Start(@"D:\Program Files\ProtectEyes\ProtectEye.exe");
         }
 
         protected override void OnStart(string[] args)

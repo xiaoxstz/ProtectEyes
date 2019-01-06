@@ -1,4 +1,4 @@
-﻿namespace ProtectEyeService
+﻿namespace ProtectEye
 {
     partial class ProjectInstaller
     {

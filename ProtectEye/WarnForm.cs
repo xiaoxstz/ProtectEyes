@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ProtectEyeService
+namespace ProtectEye
 {
     public partial class WarnForm : Form
     {
