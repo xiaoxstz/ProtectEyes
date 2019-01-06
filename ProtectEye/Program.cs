@@ -5,8 +5,9 @@ using System.Windows.Forms;
 
 namespace ProtectEye
 {
-    static class Program
+    public static class Program
     {
+
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -15,7 +16,8 @@ namespace ProtectEye
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WarnForm());
+
+            Application.Run(new WarnForm()); 
         }
     }
 }

@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarnForm));
             this.label1 = new System.Windows.Forms.Label();
             this.labelTimeLeft = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnStartWork = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -73,6 +76,13 @@
             this.btnStartWork.Text = "开始工作";
             this.btnStartWork.UseVisualStyleBackColor = true;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
             // WarnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
@@ -84,7 +94,7 @@
             this.Controls.Add(this.labelTimeLeft);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "WarnForm";
             this.Text = "护眼提示";
             this.TopMost = true;
@@ -99,5 +109,6 @@
         private System.Windows.Forms.Label labelTimeLeft;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStartWork;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
