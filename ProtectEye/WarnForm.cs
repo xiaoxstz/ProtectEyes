@@ -14,8 +14,6 @@ namespace ProtectEye
         public WarnForm()
         {
             InitializeComponent();
-
-
         }
     }
 }
