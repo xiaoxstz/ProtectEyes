@@ -5,17 +5,22 @@ using System.Windows.Forms;
 
 namespace ProtectEye
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        /// 应用程序的主入口点。
-        /// </summary>
-        [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WarnForm());
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(TimedEvent);
+            timer.Interval = 1000 * 10; // 单位:ms
+            timer.Enabled = true;
+        }
+
+        /// <summary> 定时执行事件 </summary>
+        private static void TimedEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            //业务逻辑代码
+            WarnForm _form = new WarnForm();
+            _form.Show();
         }
     }
 }
