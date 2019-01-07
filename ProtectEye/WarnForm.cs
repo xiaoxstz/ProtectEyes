@@ -24,13 +24,6 @@ namespace ProtectEye
 
         }
 
-        /// <summary> 定时执行事件 </summary>
-        private void TimedEvent(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            //业务逻辑代码
-            //notifyIcon1_DoubleClick(null, null); // 会出现跨线程问题
-            //showEvent();
-        }
         private void showThis()
         {
             this.Show();
