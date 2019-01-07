@@ -16,6 +16,17 @@ namespace ProtectEye
         public event showDelegate showEvent;
         private bool windowCreate = true;
 
+        /// <summary> 开始休息的时间 </summary>
+        private DateTime restStartTime;
+        /// <summary> 结束休息的时间 </summary>
+        private DateTime restEndTime;
+        /// <summary> 休息时间 </summary>
+        private int restTime = 5; // 单位：分钟
+
+        private DateTime now;
+        private TimeSpan timeSpan;
+
+
         public WarnForm()
         {
             InitializeComponent();
@@ -26,7 +37,17 @@ namespace ProtectEye
 
         private void showThis()
         {
+            restStartTime = DateTime.Now;
+            restEndTime = restStartTime.AddMinutes(restTime);
+            timerUpateTime.Start();
+
             this.Show();
+        }
+
+        private void hideThis()
+        {
+            timerUpateTime.Stop();
+            this.Hide();
         }
 
         protected override void OnActivated(EventArgs e)
@@ -71,7 +92,7 @@ namespace ProtectEye
 
             if (m.Msg == WM_SYSCOMMAND && (int)m.WParam == SC_CLOSE)
             {
-                this.Hide();
+                hideThis();
                 return;
             }
             base.WndProc(ref m);
@@ -82,6 +103,17 @@ namespace ProtectEye
             if (showEvent != null)
             {
                 showEvent();
+            }
+        }
+
+        private void timerUpateTime_Tick(object sender, EventArgs e)
+        {
+            now = DateTime.Now;
+            timeSpan = restEndTime - now;
+            labelTimeLeft.Text += timeSpan.ToString();
+            if(timeSpan.TotalSeconds <= 0)
+            {
+                btnStartWork.Visible = true;
             }
         }
     }
