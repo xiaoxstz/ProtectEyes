@@ -11,16 +11,17 @@ namespace ProtectEye
 {
     public partial class WarnForm : Form
     {
+        // 自定义
+        public delegate void showDelegate();
+        public event showDelegate showEvent;
         private bool windowCreate = true;
 
         public WarnForm()
         {
             InitializeComponent();
+            this.showEvent += showThis;
+            timer1.Start();
 
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(TimedEvent);
-            timer.Interval = 1000 * 10; // 单位:ms
-            timer.Enabled = true;
         }
 
         /// <summary> 定时执行事件 </summary>
@@ -28,8 +29,13 @@ namespace ProtectEye
         {
             //业务逻辑代码
             //notifyIcon1_DoubleClick(null, null); // 会出现跨线程问题
-            showEvent(true);
+            //showEvent();
         }
+        private void showThis()
+        {
+            this.Show();
+        }
+
         protected override void OnActivated(EventArgs e)
         {
             if (windowCreate)
@@ -76,6 +82,14 @@ namespace ProtectEye
                 return;
             }
             base.WndProc(ref m);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (showEvent != null)
+            {
+                showEvent();
+            }
         }
     }
 }

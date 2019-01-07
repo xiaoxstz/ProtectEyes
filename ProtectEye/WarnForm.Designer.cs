@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnStartWork = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -83,6 +84,11 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // WarnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
@@ -117,8 +123,6 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
 
         // 自定义
-        private delegate void showDelegate(bool bShow);
-        private showDelegate showEvent;
         private void showThis(bool bShow)
         {
             if (bShow)
@@ -130,5 +134,6 @@
                 this.Hide();
             }
         }
+        private System.Windows.Forms.Timer timer1;
     }
 }
