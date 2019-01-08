@@ -63,11 +63,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(450, 243);
+            this.label2.Location = new System.Drawing.Point(366, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 27);
+            this.label2.Size = new System.Drawing.Size(215, 27);
             this.label2.TabIndex = 1;
-            this.label2.Text = "剩余时间:";
+            this.label2.Text = "强制休息倒计时:";
             // 
             // btnStartWork
             // 

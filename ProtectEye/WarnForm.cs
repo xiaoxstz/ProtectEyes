@@ -37,7 +37,7 @@ namespace ProtectEye
         {
             this.showEvent += showThis;
             timerWarn.Start();
-            labelTimeLeft.Text = String.Format("0:{0}:0", restTime);
+            labelTimeLeft.Text = String.Format("00:{0:00}:00", restTime);
             this.showEvent();
         }
 
@@ -115,7 +115,7 @@ namespace ProtectEye
         {
             now = DateTime.Now;
             timeSpan = restEndTime - now;
-            labelTimeLeft.Text = String.Format("{0}:{1}:{2}",timeSpan.Hours, 
+            labelTimeLeft.Text = String.Format("{0:00}:{1:00}:{2:00}",timeSpan.Hours, 
                                 timeSpan.Minutes, timeSpan.Seconds);
             if(timeSpan.TotalSeconds <= 0)
             {
