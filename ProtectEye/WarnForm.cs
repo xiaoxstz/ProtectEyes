@@ -65,7 +65,12 @@ namespace ProtectEye
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
-            if (this.Visible == false)
+            if (this.Visible == true)
+            {
+                this.Hide();
+                this.ShowInTaskbar = false;
+            }
+            else
             {
                 this.Visible = true;
                 this.ShowInTaskbar = true;
