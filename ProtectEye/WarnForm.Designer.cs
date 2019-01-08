@@ -44,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(277, 135);
+            this.label1.Location = new System.Drawing.Point(523, 151);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(197, 40);
@@ -54,7 +54,7 @@
             // labelTimeLeft
             // 
             this.labelTimeLeft.AutoSize = true;
-            this.labelTimeLeft.Location = new System.Drawing.Point(373, 227);
+            this.labelTimeLeft.Location = new System.Drawing.Point(619, 243);
             this.labelTimeLeft.Name = "labelTimeLeft";
             this.labelTimeLeft.Size = new System.Drawing.Size(26, 27);
             this.labelTimeLeft.TabIndex = 1;
@@ -63,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(204, 227);
+            this.label2.Location = new System.Drawing.Point(450, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 27);
             this.label2.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // btnStartWork
             // 
-            this.btnStartWork.Location = new System.Drawing.Point(284, 290);
+            this.btnStartWork.Location = new System.Drawing.Point(530, 306);
             this.btnStartWork.Name = "btnStartWork";
             this.btnStartWork.Size = new System.Drawing.Size(174, 56);
             this.btnStartWork.TabIndex = 2;
@@ -102,12 +102,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(822, 553);
+            this.ClientSize = new System.Drawing.Size(1284, 608);
             this.Controls.Add(this.btnStartWork);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelTimeLeft);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "WarnForm";
             this.Text = "护眼提示";
