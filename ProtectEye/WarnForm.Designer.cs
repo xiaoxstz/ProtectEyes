@@ -111,6 +111,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "WarnForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "护眼提示";
             this.TopMost = true;
             this.ResumeLayout(false);
