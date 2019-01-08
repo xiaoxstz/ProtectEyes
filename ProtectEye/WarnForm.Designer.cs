@@ -77,7 +77,6 @@
             this.btnStartWork.TabIndex = 2;
             this.btnStartWork.Text = "开始工作";
             this.btnStartWork.UseVisualStyleBackColor = true;
-            this.btnStartWork.Visible = false;
             this.btnStartWork.Click += new System.EventHandler(this.btnStartWork_Click);
             // 
             // notifyIcon1

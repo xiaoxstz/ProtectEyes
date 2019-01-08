@@ -21,7 +21,7 @@ namespace ProtectEye
         /// <summary> 结束休息的时间 </summary>
         private DateTime restEndTime;
         /// <summary> 休息时间 </summary>
-        private int restTime = 5; // 单位：分钟
+        private int restTime = 10; // 单位：分钟
 
         private DateTime now;
         private TimeSpan timeSpan;
@@ -37,8 +37,6 @@ namespace ProtectEye
         {
             this.showEvent += showThis;
             timerWarn.Start();
-            labelTimeLeft.Text = String.Format("00:{0:00}:00", restTime);
-            this.showEvent();
         }
 
         private void showThis()
