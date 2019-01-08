@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnStartWork = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerWarn = new System.Windows.Forms.Timer(this.components);
             this.timerUpateTime = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -78,6 +78,7 @@
             this.btnStartWork.Text = "开始工作";
             this.btnStartWork.UseVisualStyleBackColor = true;
             this.btnStartWork.Visible = false;
+            this.btnStartWork.Click += new System.EventHandler(this.btnStartWork_Click);
             // 
             // notifyIcon1
             // 
@@ -86,10 +87,10 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             // 
-            // timer1
+            // timerWarn
             // 
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerWarn.Interval = 5000;
+            this.timerWarn.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timerUpateTime
             // 
@@ -125,7 +126,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStartWork;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerWarn;
         private System.Windows.Forms.Timer timerUpateTime;
     }
 }

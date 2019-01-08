@@ -36,7 +36,7 @@ namespace ProtectEye
         private void init()
         {
             this.showEvent += showThis;
-            timer1.Start();
+            timerWarn.Start();
             labelTimeLeft.Text = String.Format("0:{0}:0", restTime);
             this.showEvent();
         }
@@ -48,14 +48,8 @@ namespace ProtectEye
             timerUpateTime.Start();
 
             this.WindowState = FormWindowState.Normal;
-            //this.Show();
-            this.BringToFront();
-        }
-
-        private void hideThis()
-        {
-            timerUpateTime.Stop();
-            this.Hide();
+            btnStartWork.Visible = false;
+            this.Show();
         }
 
         protected override void OnActivated(EventArgs e)
@@ -128,6 +122,11 @@ namespace ProtectEye
                 btnStartWork.Visible = true;
                 timerUpateTime.Stop();
             }
+        }
+
+        private void btnStartWork_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
