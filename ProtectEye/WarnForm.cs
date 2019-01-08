@@ -30,9 +30,15 @@ namespace ProtectEye
         public WarnForm()
         {
             InitializeComponent();
+            init();
+        }
+
+        private void init()
+        {
             this.showEvent += showThis;
             timer1.Start();
             labelTimeLeft.Text = String.Format("0:{0}:0", restTime);
+            this.showEvent();
         }
 
         private void showThis()
@@ -101,10 +107,14 @@ namespace ProtectEye
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (showEvent != null)
+            if (this.Visible == false)
             {
-                showEvent();
+                if (showEvent != null)
+                {
+                    showEvent();
+                }
             }
+
         }
 
         private void timerUpateTime_Tick(object sender, EventArgs e)
@@ -116,6 +126,7 @@ namespace ProtectEye
             if(timeSpan.TotalSeconds <= 0)
             {
                 btnStartWork.Visible = true;
+                timerUpateTime.Stop();
             }
         }
     }
