@@ -21,7 +21,7 @@ namespace ProtectEye
         /// <summary> 结束休息的时间 </summary>
         private DateTime restEndTime;
         /// <summary> 休息时间 </summary>
-        private int restTime = 1; // 单位：分钟
+        private int restTime = 5; // 单位：分钟
 
         private DateTime now;
         private TimeSpan timeSpan;

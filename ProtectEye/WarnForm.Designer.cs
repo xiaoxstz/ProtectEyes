@@ -89,7 +89,7 @@
             // 
             // timerWarn
             // 
-            this.timerWarn.Interval = 5000;
+            this.timerWarn.Interval = 3600000;
             this.timerWarn.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timerUpateTime
@@ -112,7 +112,7 @@
             this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "WarnForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "护眼提示";
+            this.Text = "强制休息";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
