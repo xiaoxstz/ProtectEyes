@@ -21,7 +21,7 @@ namespace ProtectEye
         /// <summary> 结束休息的时间 </summary>
         private DateTime restEndTime;
         /// <summary> 休息时间 </summary>
-        private int restTime = 5; // 单位：分钟
+        private int restTime = 1; // 单位：分钟
 
         private DateTime now;
         private TimeSpan timeSpan;
@@ -32,7 +32,7 @@ namespace ProtectEye
             InitializeComponent();
             this.showEvent += showThis;
             timer1.Start();
-
+            labelTimeLeft.Text = String.Format("0:{0}:0", restTime);
         }
 
         private void showThis()
@@ -41,7 +41,9 @@ namespace ProtectEye
             restEndTime = restStartTime.AddMinutes(restTime);
             timerUpateTime.Start();
 
-            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            //this.Show();
+            this.BringToFront();
         }
 
         private void hideThis()
@@ -80,7 +82,7 @@ namespace ProtectEye
         }
 
         /// <summary>
-        /// 重写 WndProc 函数,禁用关闭,改为隐藏
+        /// 重写 WndProc 函数,禁用关闭
         /// </summary>
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
@@ -92,7 +94,6 @@ namespace ProtectEye
 
             if (m.Msg == WM_SYSCOMMAND && (int)m.WParam == SC_CLOSE)
             {
-                hideThis();
                 return;
             }
             base.WndProc(ref m);
@@ -110,7 +111,8 @@ namespace ProtectEye
         {
             now = DateTime.Now;
             timeSpan = restEndTime - now;
-            labelTimeLeft.Text += timeSpan.ToString();
+            labelTimeLeft.Text = String.Format("{0}:{1}:{2}",timeSpan.Hours, 
+                                timeSpan.Minutes, timeSpan.Seconds);
             if(timeSpan.TotalSeconds <= 0)
             {
                 btnStartWork.Visible = true;
