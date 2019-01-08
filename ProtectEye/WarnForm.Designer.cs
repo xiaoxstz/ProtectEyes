@@ -44,26 +44,26 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(523, 151);
+            this.label1.Location = new System.Drawing.Point(424, 151);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 40);
+            this.label1.Size = new System.Drawing.Size(417, 40);
             this.label1.TabIndex = 0;
-            this.label1.Text = "注意休息!";
+            this.label1.Text = "保护眼睛，小心猝死！";
             // 
             // labelTimeLeft
             // 
             this.labelTimeLeft.AutoSize = true;
-            this.labelTimeLeft.Location = new System.Drawing.Point(619, 243);
+            this.labelTimeLeft.Location = new System.Drawing.Point(679, 243);
             this.labelTimeLeft.Name = "labelTimeLeft";
-            this.labelTimeLeft.Size = new System.Drawing.Size(26, 27);
+            this.labelTimeLeft.Size = new System.Drawing.Size(124, 27);
             this.labelTimeLeft.TabIndex = 1;
-            this.labelTimeLeft.Text = "0";
+            this.labelTimeLeft.Text = "00:00:00";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(366, 243);
+            this.label2.Location = new System.Drawing.Point(426, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 27);
             this.label2.TabIndex = 1;
