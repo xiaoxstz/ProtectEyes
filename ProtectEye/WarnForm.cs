@@ -44,6 +44,7 @@ namespace ProtectEye
             restStartTime = DateTime.Now;
             restEndTime = restStartTime.AddMinutes(restTime);
             timerUpateTime.Start();
+            timerWarn.Stop();
 
             this.WindowState = FormWindowState.Normal;
             btnStartWork.Visible = false;
@@ -124,6 +125,7 @@ namespace ProtectEye
         private void btnStartWork_Click(object sender, EventArgs e)
         {
             this.Hide();
+            timerWarn.Start();
         }
     }
 }
