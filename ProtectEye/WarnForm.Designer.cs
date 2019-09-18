@@ -116,12 +116,13 @@
             // 
             // btnWorkAgainForAWhile
             // 
+            this.btnWorkAgainForAWhile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWorkAgainForAWhile.Font = new System.Drawing.Font("宋体", 10F);
-            this.btnWorkAgainForAWhile.Location = new System.Drawing.Point(557, 394);
+            this.btnWorkAgainForAWhile.Location = new System.Drawing.Point(1164, 567);
             this.btnWorkAgainForAWhile.Name = "btnWorkAgainForAWhile";
             this.btnWorkAgainForAWhile.Size = new System.Drawing.Size(108, 29);
             this.btnWorkAgainForAWhile.TabIndex = 2;
-            this.btnWorkAgainForAWhile.Text = "再工作五分钟";
+            this.btnWorkAgainForAWhile.Text = "过会儿再休息";
             this.btnWorkAgainForAWhile.UseVisualStyleBackColor = true;
             this.btnWorkAgainForAWhile.Click += new System.EventHandler(this.btnWorkAgainForAWhile_Click);
             // 

@@ -16,12 +16,17 @@ namespace ProtectEye
         /// <summary>
         /// 休息时间
         /// </summary>
-        private int restTime = 10; // 单位：分钟
+        private const int restTime = 10; // 单位：分钟
 
         /// <summary>
         /// 允许将休息时间推迟几次
         /// </summary>
-        private const int DELAY_TIMES = 3;
+        private const int DELAY_COUNT = 3;
+
+        /// <summary>
+        /// 推迟休息的时间（分钟）
+        /// </summary>
+        private const int DELAY_MINUTE = 5;
 
         /// <summary>
         /// 连续工作多久开始提示休息
@@ -37,15 +42,13 @@ namespace ProtectEye
         public event showDelegate startRest;
         private bool windowCreate = true;
 
-        /// <summary> 开始休息的时间 </summary>
-        private DateTime restStartTime;
         /// <summary> 结束休息的时间 </summary>
         private DateTime restEndTime;
 
         /// <summary>
         /// 这是第几次推迟
         /// </summary>
-        private int delayTime = 0;
+        private int delayCount = 0;
 
         private DateTime now;
         private TimeSpan timeSpan;
@@ -60,8 +63,6 @@ namespace ProtectEye
         private void init()
         {
             this.startRest += WarnRest;
-            timerRestWarn.Interval = RestWarnInterval * 1000 * 60;
-            timerRestWarn.Start();
             btnWorkAgainForAWhile.Visible = false;
         }
 
@@ -130,12 +131,13 @@ namespace ProtectEye
 
         private void btnStartWork_Click(object sender, EventArgs e)
         {
-            Work();
+            Work(RestWarnInterval);
         }
 
         private void 提前休息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timerRestWarn_Tick(null,null);
+            btnWorkAgainForAWhile.Visible = false;
         }
 
         private void WarnForm_Load(object sender, EventArgs e)
@@ -145,16 +147,17 @@ namespace ProtectEye
 
         private void btnWorkAgainForAWhile_Click(object sender, EventArgs e)
         {
-            this.delayTime += 1;
-            Work();
+            this.delayCount += 1;
+            Work(DELAY_MINUTE);
         }
 
         /// <summary>
         /// 开始工作
         /// </summary>
-        private void Work()
+        private void Work(int minute)
         {
             this.Hide();
+            timerRestWarn.Interval = minute * 1000 * 60;
             timerRestWarn.Start();
         }
 
@@ -164,7 +167,7 @@ namespace ProtectEye
         private void WarnRest()
         {
             Rest();
-            if (this.delayTime < DELAY_TIMES)
+            if (this.delayCount < DELAY_COUNT)
             {
                 btnWorkAgainForAWhile.Visible = true;
             }
@@ -172,7 +175,7 @@ namespace ProtectEye
             {
                 btnWorkAgainForAWhile.Visible = false;
                 // 推迟次数置零
-                this.delayTime = 0;
+                this.delayCount = 0;
             }
         }
 
@@ -181,8 +184,7 @@ namespace ProtectEye
         /// </summary>
         private void Rest()
         {
-            restStartTime = DateTime.Now;
-            restEndTime = restStartTime.AddMinutes(restTime);   // 计算休息结束时间
+            restEndTime = DateTime.Now.AddMinutes(restTime);   // 计算休息结束时间
 
             // 弹窗遮挡，并禁用“开始工作”
             this.WindowState = FormWindowState.Normal;
