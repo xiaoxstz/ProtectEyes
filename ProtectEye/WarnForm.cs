@@ -76,24 +76,6 @@ namespace ProtectEye
             base.OnActivated(e);
         }
 
-        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
-        {
-            // 显示面板
-            if (this.Visible == true)
-            {
-                this.Hide();
-                this.ShowInTaskbar = false;
-            }
-            else
-            {
-                this.Visible = true;
-                this.ShowInTaskbar = true;
-                this.WindowState = FormWindowState.Normal;
-                //this.Show();
-                this.BringToFront();
-            }
-        }
-
         /// <summary>
         /// 重写 WndProc 函数,禁用关闭
         /// </summary>
