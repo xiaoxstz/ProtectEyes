@@ -106,7 +106,7 @@
             // 
             // timerRestWarn
             // 
-            this.timerRestWarn.Interval = 3600000;
+            this.timerRestWarn.Interval = 6000;
             this.timerRestWarn.Tick += new System.EventHandler(this.timerRestWarn_Tick);
             // 
             // timerUpateTime

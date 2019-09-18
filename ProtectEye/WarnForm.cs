@@ -11,6 +11,24 @@ namespace ProtectEye
 {
     public partial class WarnForm : Form
     {
+        #region 参数设置区
+
+        /// <summary>
+        /// 休息时间
+        /// </summary>
+        private int restTime = 10; // 单位：分钟
+
+        /// <summary>
+        /// 允许将休息时间推迟几次
+        /// </summary>
+        private const int DELAY_TIMES = 3;
+
+        /// <summary>
+        /// 连续工作多久开始提示休息
+        /// </summary>
+        private const int RestWarnInterval = 60; // 单位:分钟
+        #endregion
+
         // 自定义
         public delegate void showDelegate();
         /// <summary>
@@ -23,13 +41,6 @@ namespace ProtectEye
         private DateTime restStartTime;
         /// <summary> 结束休息的时间 </summary>
         private DateTime restEndTime;
-        /// <summary> 休息时间 </summary>
-        private int restTime = 10; // 单位：分钟
-
-        /// <summary>
-        /// 允许将休息时间推迟几次
-        /// </summary>
-        private const int DELAY_TIMES = 3;
 
         /// <summary>
         /// 这是第几次推迟
@@ -49,6 +60,7 @@ namespace ProtectEye
         private void init()
         {
             this.startRest += WarnRest;
+            timerRestWarn.Interval = RestWarnInterval * 1000 * 60;
             timerRestWarn.Start();
             btnWorkAgainForAWhile.Visible = false;
         }
