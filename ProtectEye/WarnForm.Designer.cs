@@ -39,6 +39,7 @@
             this.提前休息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerRestWarn = new System.Windows.Forms.Timer(this.components);
             this.timerUpateTime = new System.Windows.Forms.Timer(this.components);
+            this.btnWorkAgainForAWhile = new System.Windows.Forms.Button();
             this.contextMenuStripNotify.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,12 +114,24 @@
             this.timerUpateTime.Interval = 1000;
             this.timerUpateTime.Tick += new System.EventHandler(this.timerUpateTime_Tick);
             // 
+            // btnWorkAgainForAWhile
+            // 
+            this.btnWorkAgainForAWhile.Font = new System.Drawing.Font("宋体", 10F);
+            this.btnWorkAgainForAWhile.Location = new System.Drawing.Point(557, 394);
+            this.btnWorkAgainForAWhile.Name = "btnWorkAgainForAWhile";
+            this.btnWorkAgainForAWhile.Size = new System.Drawing.Size(108, 29);
+            this.btnWorkAgainForAWhile.TabIndex = 2;
+            this.btnWorkAgainForAWhile.Text = "再工作五分钟";
+            this.btnWorkAgainForAWhile.UseVisualStyleBackColor = true;
+            this.btnWorkAgainForAWhile.Click += new System.EventHandler(this.btnWorkAgainForAWhile_Click);
+            // 
             // WarnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1284, 608);
+            this.Controls.Add(this.btnWorkAgainForAWhile);
             this.Controls.Add(this.btnStartWork);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelTimeLeft);
@@ -131,6 +144,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "强制休息";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.WarnForm_Load);
             this.contextMenuStripNotify.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,5 +164,6 @@
         private System.Windows.Forms.Timer timerUpateTime;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripNotify;
         private System.Windows.Forms.ToolStripMenuItem 提前休息ToolStripMenuItem;
+        private System.Windows.Forms.Button btnWorkAgainForAWhile;
     }
 }

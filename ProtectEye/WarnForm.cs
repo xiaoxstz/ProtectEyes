@@ -13,7 +13,10 @@ namespace ProtectEye
     {
         // 自定义
         public delegate void showDelegate();
-        public event showDelegate showEvent;
+        /// <summary>
+        /// 休息事件
+        /// </summary>
+        public event showDelegate startRest;
         private bool windowCreate = true;
 
         /// <summary> 开始休息的时间 </summary>
@@ -22,6 +25,16 @@ namespace ProtectEye
         private DateTime restEndTime;
         /// <summary> 休息时间 </summary>
         private int restTime = 10; // 单位：分钟
+
+        /// <summary>
+        /// 允许将休息时间推迟几次
+        /// </summary>
+        private const int DELAY_TIMES = 3;
+
+        /// <summary>
+        /// 这是第几次推迟
+        /// </summary>
+        private int delayTime = 0;
 
         private DateTime now;
         private TimeSpan timeSpan;
@@ -35,23 +48,9 @@ namespace ProtectEye
 
         private void init()
         {
-            this.showEvent += showThis;
+            this.startRest += WarnRest;
             timerRestWarn.Start();
-        }
-
-        /// <summary>
-        /// 显示窗体
-        /// </summary>
-        private void showThis()
-        {
-            restStartTime = DateTime.Now;
-            restEndTime = restStartTime.AddMinutes(restTime);
-            timerUpateTime.Start();
-            timerRestWarn.Stop();
-
-            this.WindowState = FormWindowState.Normal;
-            btnStartWork.Visible = false;
-            this.Show();
+            btnWorkAgainForAWhile.Visible = false;
         }
 
         protected override void OnActivated(EventArgs e)
@@ -110,12 +109,11 @@ namespace ProtectEye
         {
             if (this.Visible == false)
             {
-                if (showEvent != null)
+                if (startRest != null)
                 {
-                    showEvent();
+                    startRest();
                 }
             }
-
         }
 
         /// <summary>
@@ -138,13 +136,69 @@ namespace ProtectEye
 
         private void btnStartWork_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            timerRestWarn.Start();
+            Work();
         }
 
         private void 提前休息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timerRestWarn_Tick(null,null);
+        }
+
+        private void WarnForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnWorkAgainForAWhile_Click(object sender, EventArgs e)
+        {
+            this.delayTime += 1;
+            Work();
+        }
+
+        /// <summary>
+        /// 开始工作
+        /// </summary>
+        private void Work()
+        {
+            this.Hide();
+            timerRestWarn.Start();
+        }
+
+        /// <summary>
+        /// 提醒休息
+        /// </summary>
+        private void WarnRest()
+        {
+            Rest();
+            if (this.delayTime < DELAY_TIMES)
+            {
+                btnWorkAgainForAWhile.Visible = true;
+            }
+            else
+            {
+                btnWorkAgainForAWhile.Visible = false;
+                // 推迟次数置零
+                this.delayTime = 0;
+            }
+        }
+
+        /// <summary>
+        /// 开始休息
+        /// </summary>
+        private void Rest()
+        {
+            restStartTime = DateTime.Now;
+            restEndTime = restStartTime.AddMinutes(restTime);   // 计算休息结束时间
+
+            // 弹窗遮挡，并禁用“开始工作”
+            this.WindowState = FormWindowState.Normal;
+            btnStartWork.Visible = false;
+            this.Show();
+
+            btnWorkAgainForAWhile.Visible = false;
+            // 开始休息倒计时
+            timerUpateTime.Start();
+            timerRestWarn.Stop();
         }
     }
 }
