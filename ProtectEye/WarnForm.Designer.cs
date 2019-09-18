@@ -35,8 +35,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnStartWork = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.timerWarn = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStripNotify = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.提前休息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerRestWarn = new System.Windows.Forms.Timer(this.components);
             this.timerUpateTime = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStripNotify.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -81,14 +84,29 @@
             // 
             // notifyIcon1
             // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStripNotify;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "强制休息";
             this.notifyIcon1.Visible = true;
             // 
-            // timerWarn
+            // contextMenuStripNotify
             // 
-            this.timerWarn.Interval = 3600000;
-            this.timerWarn.Tick += new System.EventHandler(this.timer1_Tick);
+            this.contextMenuStripNotify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.提前休息ToolStripMenuItem});
+            this.contextMenuStripNotify.Name = "contextMenuStripNotify";
+            this.contextMenuStripNotify.Size = new System.Drawing.Size(125, 26);
+            // 
+            // 提前休息ToolStripMenuItem
+            // 
+            this.提前休息ToolStripMenuItem.Name = "提前休息ToolStripMenuItem";
+            this.提前休息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.提前休息ToolStripMenuItem.Text = "提前休息";
+            this.提前休息ToolStripMenuItem.Click += new System.EventHandler(this.提前休息ToolStripMenuItem_Click);
+            // 
+            // timerRestWarn
+            // 
+            this.timerRestWarn.Interval = 3600000;
+            this.timerRestWarn.Tick += new System.EventHandler(this.timerRestWarn_Tick);
             // 
             // timerUpateTime
             // 
@@ -113,6 +131,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "强制休息";
             this.TopMost = true;
+            this.contextMenuStripNotify.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,7 +146,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStartWork;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Timer timerWarn;
+        private System.Windows.Forms.Timer timerRestWarn;
         private System.Windows.Forms.Timer timerUpateTime;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripNotify;
+        private System.Windows.Forms.ToolStripMenuItem 提前休息ToolStripMenuItem;
     }
 }

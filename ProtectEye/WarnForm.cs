@@ -36,15 +36,18 @@ namespace ProtectEye
         private void init()
         {
             this.showEvent += showThis;
-            timerWarn.Start();
+            timerRestWarn.Start();
         }
 
+        /// <summary>
+        /// 显示窗体
+        /// </summary>
         private void showThis()
         {
             restStartTime = DateTime.Now;
             restEndTime = restStartTime.AddMinutes(restTime);
             timerUpateTime.Start();
-            timerWarn.Stop();
+            timerRestWarn.Stop();
 
             this.WindowState = FormWindowState.Normal;
             btnStartWork.Visible = false;
@@ -64,6 +67,7 @@ namespace ProtectEye
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
+            // 显示面板
             if (this.Visible == true)
             {
                 this.Hide();
@@ -97,7 +101,12 @@ namespace ProtectEye
             base.WndProc(ref m);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// 用于提醒休息的计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerRestWarn_Tick(object sender, EventArgs e)
         {
             if (this.Visible == false)
             {
@@ -109,6 +118,11 @@ namespace ProtectEye
 
         }
 
+        /// <summary>
+        /// 用于更新时间的计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerUpateTime_Tick(object sender, EventArgs e)
         {
             now = DateTime.Now;
@@ -125,7 +139,12 @@ namespace ProtectEye
         private void btnStartWork_Click(object sender, EventArgs e)
         {
             this.Hide();
-            timerWarn.Start();
+            timerRestWarn.Start();
+        }
+
+        private void 提前休息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timerRestWarn_Tick(null,null);
         }
     }
 }
