@@ -14,11 +14,6 @@ namespace ProtectEye
         #region 参数设置区
 
         /// <summary>
-        /// 休息时间
-        /// </summary>
-        private const int restTime = 10; // 单位：分钟
-
-        /// <summary>
         /// 允许将休息时间推迟几次
         /// </summary>
         private const int DELAY_COUNT = 3;
@@ -26,12 +21,17 @@ namespace ProtectEye
         /// <summary>
         /// 推迟休息的时间（分钟）
         /// </summary>
-        private const int DELAY_MINUTE = 5;
+        private const double DELAY_MINUTE = 5;
 
         /// <summary>
         /// 连续工作多久开始提示休息
         /// </summary>
-        private const int RestWarnInterval = 60; // 单位:分钟
+        private const double RestWarnInterval = 60; // 单位:分钟
+
+        /// <summary>
+        /// 休息时间
+        /// </summary>
+        private const double restTime = 10; // 单位：分钟
         #endregion
 
         // 自定义
@@ -154,10 +154,10 @@ namespace ProtectEye
         /// <summary>
         /// 开始工作
         /// </summary>
-        private void Work(int minute)
+        private void Work(double minute)
         {
             this.Hide();
-            timerRestWarn.Interval = minute * 1000 * 60;
+            timerRestWarn.Interval = (int)(minute * 1000 * 60);
             timerRestWarn.Start();
         }
 
