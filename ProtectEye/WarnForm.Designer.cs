@@ -46,12 +46,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("SimSun", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(424, 151);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(417, 40);
+            this.label1.Size = new System.Drawing.Size(625, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "保护眼睛，小心猝死！";
             // 
@@ -60,7 +60,7 @@
             this.labelTimeLeft.AutoSize = true;
             this.labelTimeLeft.Location = new System.Drawing.Point(679, 243);
             this.labelTimeLeft.Name = "labelTimeLeft";
-            this.labelTimeLeft.Size = new System.Drawing.Size(124, 27);
+            this.labelTimeLeft.Size = new System.Drawing.Size(177, 40);
             this.labelTimeLeft.TabIndex = 1;
             this.labelTimeLeft.Text = "00:00:00";
             // 
@@ -69,7 +69,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(426, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 27);
+            this.label2.Size = new System.Drawing.Size(317, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "强制休息倒计时:";
             // 
@@ -92,15 +92,16 @@
             // 
             // contextMenuStripNotify
             // 
+            this.contextMenuStripNotify.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStripNotify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.提前休息ToolStripMenuItem});
             this.contextMenuStripNotify.Name = "contextMenuStripNotify";
-            this.contextMenuStripNotify.Size = new System.Drawing.Size(125, 26);
+            this.contextMenuStripNotify.Size = new System.Drawing.Size(153, 34);
             // 
             // 提前休息ToolStripMenuItem
             // 
             this.提前休息ToolStripMenuItem.Name = "提前休息ToolStripMenuItem";
-            this.提前休息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.提前休息ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.提前休息ToolStripMenuItem.Text = "提前休息";
             this.提前休息ToolStripMenuItem.Click += new System.EventHandler(this.提前休息ToolStripMenuItem_Click);
             // 
@@ -117,7 +118,7 @@
             // btnWorkAgainForAWhile
             // 
             this.btnWorkAgainForAWhile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWorkAgainForAWhile.Font = new System.Drawing.Font("宋体", 10F);
+            this.btnWorkAgainForAWhile.Font = new System.Drawing.Font("SimSun", 10F);
             this.btnWorkAgainForAWhile.Location = new System.Drawing.Point(1164, 567);
             this.btnWorkAgainForAWhile.Name = "btnWorkAgainForAWhile";
             this.btnWorkAgainForAWhile.Size = new System.Drawing.Size(108, 29);
@@ -128,7 +129,7 @@
             // 
             // WarnForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1284, 608);
@@ -137,7 +138,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelTimeLeft);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("SimSun", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(7);
@@ -146,6 +147,7 @@
             this.Text = "强制休息";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.WarnForm_Load);
+            this.Shown += new System.EventHandler(this.WarnForm_Shown);
             this.contextMenuStripNotify.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

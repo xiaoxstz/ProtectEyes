@@ -40,6 +40,7 @@ namespace ProtectEye
         /// 休息事件
         /// </summary>
         public event showDelegate startRest;
+
         private bool windowCreate = true;
 
         /// <summary> 结束休息的时间 </summary>
@@ -142,7 +143,7 @@ namespace ProtectEye
 
         private void WarnForm_Load(object sender, EventArgs e)
         {
-
+            this.Location = GetCenter(Screen.PrimaryScreen, this);
         }
 
         private void btnWorkAgainForAWhile_Click(object sender, EventArgs e)
@@ -190,11 +191,44 @@ namespace ProtectEye
             this.WindowState = FormWindowState.Normal;
             btnStartWork.Visible = false;
             this.Show();
+            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
 
             btnWorkAgainForAWhile.Visible = false;
             // 开始休息倒计时
             timerUpateTime.Start();
             timerRestWarn.Stop();
+        }
+
+        private void WarnForm_Shown(object sender, EventArgs e)
+        {
+            foreach(Screen screen in Screen.AllScreens)
+            {
+                // block window
+                if (!screen.Primary)
+                {
+                    BlockForm form = new BlockForm();
+                    form.Show();
+
+                    // 居中
+                    form.Location = GetCenter(screen, form);
+                }
+            }
+        }
+
+        
+        /// <summary>
+        /// 获取，让窗口在屏幕上居中，需要的location点(左上角)
+        /// </summary>
+        /// <param name="screen">屏幕</param>
+        /// <param name="form">窗体</param>
+        /// <returns>点</returns>
+        private Point GetCenter(Screen screen, Form form)
+        {
+            int shift_x = (screen.Bounds.Width - form.Width) / 2;
+            int shift_y = (screen.Bounds.Height - form.Height) / 2;
+            int x = screen.Bounds.X + shift_x;
+            int y = screen.Bounds.Y + shift_y;
+            return new Point(x, y);
         }
     }
 }
