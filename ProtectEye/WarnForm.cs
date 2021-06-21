@@ -32,6 +32,8 @@ namespace ProtectEye
         /// 休息时间
         /// </summary>
         private const double restTime = 10; // 单位：分钟
+
+        private const double blockPercent = 0.7;  // 遮挡屏幕的百分比
         #endregion
 
         // 自定义
@@ -143,6 +145,7 @@ namespace ProtectEye
 
         private void WarnForm_Load(object sender, EventArgs e)
         {
+            this.Size = this.GetScreenPartSize(Screen.PrimaryScreen, blockPercent);
             this.Location = GetCenter(Screen.PrimaryScreen, this);
         }
 
@@ -208,7 +211,7 @@ namespace ProtectEye
                 {
                     BlockForm form = new BlockForm();
                     form.Show();
-
+                    form.Size = this.GetScreenPartSize(screen, blockPercent);
                     // 居中
                     form.Location = GetCenter(screen, form);
                 }
@@ -229,6 +232,19 @@ namespace ProtectEye
             int x = screen.Bounds.X + shift_x;
             int y = screen.Bounds.Y + shift_y;
             return new Point(x, y);
+        }
+
+        /// <summary>
+        /// 如果要遮挡屏幕的百分之多少，需要多少的尺寸
+        /// </summary>
+        /// <param name="screen">屏幕</param>
+        /// <param name="percent">百分比</param>
+        /// <returns>Size(</returns>
+        private Size GetScreenPartSize(Screen screen,double percent)
+        {
+            int width = (int)(screen.Bounds.Width * percent);
+            int height = (int)(screen.Bounds.Height * percent);
+            return new Size(width, height);
         }
     }
 }
