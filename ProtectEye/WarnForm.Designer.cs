@@ -40,7 +40,9 @@
             this.timerRestWarn = new System.Windows.Forms.Timer(this.components);
             this.timerUpateTime = new System.Windows.Forms.Timer(this.components);
             this.btnWorkAgainForAWhile = new System.Windows.Forms.Button();
+            this.panelMessage = new System.Windows.Forms.Panel();
             this.contextMenuStripNotify.SuspendLayout();
+            this.panelMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +50,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(424, 151);
+            this.label1.Location = new System.Drawing.Point(46, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(625, 60);
@@ -58,7 +60,7 @@
             // labelTimeLeft
             // 
             this.labelTimeLeft.AutoSize = true;
-            this.labelTimeLeft.Location = new System.Drawing.Point(679, 243);
+            this.labelTimeLeft.Location = new System.Drawing.Point(398, 164);
             this.labelTimeLeft.Name = "labelTimeLeft";
             this.labelTimeLeft.Size = new System.Drawing.Size(177, 40);
             this.labelTimeLeft.TabIndex = 1;
@@ -67,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(426, 243);
+            this.label2.Location = new System.Drawing.Point(49, 164);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(317, 40);
             this.label2.TabIndex = 1;
@@ -75,9 +77,9 @@
             // 
             // btnStartWork
             // 
-            this.btnStartWork.Location = new System.Drawing.Point(530, 306);
+            this.btnStartWork.Location = new System.Drawing.Point(118, 268);
             this.btnStartWork.Name = "btnStartWork";
-            this.btnStartWork.Size = new System.Drawing.Size(174, 56);
+            this.btnStartWork.Size = new System.Drawing.Size(223, 56);
             this.btnStartWork.TabIndex = 2;
             this.btnStartWork.Text = "开始工作";
             this.btnStartWork.UseVisualStyleBackColor = true;
@@ -119,13 +121,25 @@
             // 
             this.btnWorkAgainForAWhile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWorkAgainForAWhile.Font = new System.Drawing.Font("SimSun", 10F);
-            this.btnWorkAgainForAWhile.Location = new System.Drawing.Point(1164, 567);
+            this.btnWorkAgainForAWhile.Location = new System.Drawing.Point(443, 295);
             this.btnWorkAgainForAWhile.Name = "btnWorkAgainForAWhile";
-            this.btnWorkAgainForAWhile.Size = new System.Drawing.Size(108, 29);
+            this.btnWorkAgainForAWhile.Size = new System.Drawing.Size(167, 29);
             this.btnWorkAgainForAWhile.TabIndex = 2;
             this.btnWorkAgainForAWhile.Text = "过会儿再休息";
             this.btnWorkAgainForAWhile.UseVisualStyleBackColor = true;
             this.btnWorkAgainForAWhile.Click += new System.EventHandler(this.btnWorkAgainForAWhile_Click);
+            // 
+            // panelMessage
+            // 
+            this.panelMessage.Controls.Add(this.label1);
+            this.panelMessage.Controls.Add(this.label2);
+            this.panelMessage.Controls.Add(this.btnWorkAgainForAWhile);
+            this.panelMessage.Controls.Add(this.btnStartWork);
+            this.panelMessage.Controls.Add(this.labelTimeLeft);
+            this.panelMessage.Location = new System.Drawing.Point(285, 89);
+            this.panelMessage.Name = "panelMessage";
+            this.panelMessage.Size = new System.Drawing.Size(696, 387);
+            this.panelMessage.TabIndex = 3;
             // 
             // WarnForm
             // 
@@ -133,11 +147,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1284, 608);
-            this.Controls.Add(this.btnWorkAgainForAWhile);
-            this.Controls.Add(this.btnStartWork);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelTimeLeft);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panelMessage);
             this.Font = new System.Drawing.Font("SimSun", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -148,9 +158,11 @@
             this.TopMost = true;
             this.Load += new System.EventHandler(this.WarnForm_Load);
             this.Shown += new System.EventHandler(this.WarnForm_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.WarnForm_Paint);
             this.contextMenuStripNotify.ResumeLayout(false);
+            this.panelMessage.ResumeLayout(false);
+            this.panelMessage.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -168,5 +180,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripNotify;
         private System.Windows.Forms.ToolStripMenuItem 提前休息ToolStripMenuItem;
         private System.Windows.Forms.Button btnWorkAgainForAWhile;
+        private System.Windows.Forms.Panel panelMessage;
     }
 }

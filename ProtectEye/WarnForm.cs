@@ -33,7 +33,7 @@ namespace ProtectEye
         /// </summary>
         private const double restTime = 10; // 单位：分钟
 
-        private const double blockPercent = 0.7;  // 遮挡屏幕的百分比
+        private const double blockPercent = 0.5;  // 遮挡屏幕的百分比
         #endregion
 
         // 自定义
@@ -204,7 +204,10 @@ namespace ProtectEye
 
         private void WarnForm_Shown(object sender, EventArgs e)
         {
-            foreach(Screen screen in Screen.AllScreens)
+            // 让该面板使用居中
+            panelMessage.Location = this.Location;
+
+            foreach (Screen screen in Screen.AllScreens)
             {
                 // block window
                 if (!screen.Primary)
@@ -245,6 +248,11 @@ namespace ProtectEye
             int width = (int)(screen.Bounds.Width * percent);
             int height = (int)(screen.Bounds.Height * percent);
             return new Size(width, height);
+        }
+
+        private void WarnForm_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
